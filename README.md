@@ -65,7 +65,7 @@ For Software:
 ![Input Page](input.png)
 This screenshot shows the input page where the user enters their age, weight, sleep, and exercise details before calculating their human battery level.
 
-![Output Page](output.png)
+![Output Page](result.png)
 This screenshot shows the calculated human battery percentage and the resulting energy information displayed by the application.
 
 

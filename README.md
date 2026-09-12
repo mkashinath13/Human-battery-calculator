@@ -61,14 +61,15 @@ Project Documentation
 
 For Software:
 
-# Screenshots (Add at least 3)
+# Screenshots
+![Input Page](input.png)
 This screenshot shows the input page where the user enters their age, weight, sleep, and exercise details before calculating their human battery level.
 
-
+![Output Page](output.png)
 This screenshot shows the calculated human battery percentage and the resulting energy information displayed by the application.
 
 
-This screenshot shows the overall interface of the Human Battery Calculator and its main user interface.
+
 
 # Diagrams
 The workflow shows how the user's lifestyle information is entered, processed by the JavaScript calculation logic, and converted into a human battery percentage displayed through the result interface.

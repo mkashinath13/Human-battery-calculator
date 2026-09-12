@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Battery Calculator</title>
+  <meta name="description" content="Calculate your daily human battery level with this interactive estimator.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>HUMAN BATTERY</h1>
+      <p class="subtitle">Daily Energy Estimate</p>
+    </header>
+
+    <main>
+      <!-- Input Section -->
+      <section id="input-section" class="card active">
+        <form id="battery-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" id="age" required min="1" max="120" value="30">
+            </div>
+            
+            <div class="form-group">
+              <label for="sex">Sex</label>
+              <select id="sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="height">Height (cm)</label>
+              <input type="number" id="height" required min="50" max="300" value="175">
+            </div>
+
+            <div class="form-group">
+              <label for="weight">Weight (kg)</label>
+              <input type="number" id="weight" required min="20" max="300" value="70">
+            </div>
+
+            <div class="form-group">
+              <label for="activity">Activity Level</label>
+              <select id="activity" required>
+                <option value="sedentary">Sedentary (Little to no exercise)</option>
+                <option value="light">Lightly active (1-3 days/wk)</option>
+                <option value="moderate" selected>Moderately active (3-5 days/wk)</option>
+                <option value="very">Very active (6-7 days/wk)</option>
+                <option value="extra">Extremely active (Physical job)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="wake-time">Wake Time Today</label>
+              <input type="time" id="wake-time" required value="07:00">
+            </div>
+
+            <div class="form-group">
+              <label for="sleep-hours">Sleep (Hours)</label>
+              <input type="number" id="sleep-hours" required min="0" max="24" step="0.5" value="7">
+            </div>
+
+            <div class="form-group">
+              <label for="sleep-quality">Sleep Quality (1-10)</label>
+              <input type="number" id="sleep-quality" required min="1" max="10" value="7">
+            </div>
+
+            <div class="form-group">
+              <label for="exercise-duration">Exercise Duration (mins)</label>
+              <input type="number" id="exercise-duration" required min="0" max="600" value="30">
+            </div>
+
+            <div class="form-group">
+              <label for="exercise-intensity">Exercise Intensity (1-10)</label>
+              <input type="number" id="exercise-intensity" required min="1" max="10" value="6">
+            </div>
+
+            <div class="form-group full-width">
+              <label for="calories">Calories Consumed Today (Optional kcal)</label>
+              <input type="number" id="calories" min="0" max="10000" placeholder="e.g. 2000">
+            </div>
+          </div>
+          
+          <button type="submit" class="primary-btn">Calculate Battery</button>
+        </form>
+      </section>
+
+      <!-- Result Section -->
+      <section id="result-section" class="card hidden">
+        <div class="gauge-container">
+          <svg viewBox="0 0 100 100" class="battery-gauge">
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <circle class="gauge-bg" cx="50" cy="50" r="40"></circle>
+            <circle class="gauge-progress" cx="50" cy="50" r="40" id="gauge-path" transform="rotate(-90 50 50)"></circle>
+          </svg>
+          <div class="gauge-content">
+            <div class="gauge-value" id="battery-percent">0%</div>
+            <div class="gauge-status" id="battery-status">Initializing</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-label">Est. BMR</div>
+            <div class="stat-value" id="stat-bmr">0 kcal</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Est. TDEE</div>
+            <div class="stat-value" id="stat-tdee">0 kcal</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Calories Burned (Exercise)</div>
+            <div class="stat-value" id="stat-exercise">0 kcal</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Sleep Score</div>
+            <div class="stat-value" id="stat-sleep">0/100</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Est. Remaining Energy</div>
+            <div class="stat-value" id="stat-remaining">0 kcal</div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <h3>Daily Energy Trends</h3>
+          <div class="trend-chart" id="trend-chart">
+            <!-- Bars will be inserted here by JS -->
+          </div>
+        </div>
+
+        <button id="recalculate-btn" class="secondary-btn">Recalculate</button>
+        <p class="disclaimer">* This is a gamified wellness estimate based on your inputs, not a scientifically validated medical measurement.</p>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

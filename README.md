@@ -10,7 +10,7 @@
 
 
 ### Team Members
-- Team Lead: Janaki Remesh - College of Engineering Allapuzha
+- Team Lead: Janaki Remesh - College of Engineering Alappuzha
 
 
 ### Project Description
